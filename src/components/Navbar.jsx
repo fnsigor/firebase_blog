@@ -7,13 +7,14 @@ import { useAuthentication } from '../hooks/useAuthentication'
 
 const Nav = styled.nav`
 display: flex;
-box-shadow: rgba(0,0,0, .15) 0 -2px 10px 0px;
+box-shadow: rgba(0,0,0, .15) 0 -2px 10px 5px;
 justify-content: space-between;
 align-items: center;
-padding: .5rem 2rem;
+padding: 2rem 4rem;
+margin-bottom: 4rem;
 
 .brand{
-    font-size:1.2em;
+    font-size:2rem;
 
     span{
         font-weight: 900;
@@ -29,11 +30,16 @@ ul{
         margin-right: 1rem;
 
         a{
-            padding:  .4em .6em;
+            padding:  .4rem .6rem;
+            font-size: 1.6rem;
         }
     }
-}
 
+
+    button{
+        font-size: 1.6rem;
+    }
+}
 `
 
 const Navbar = () => {
@@ -42,8 +48,8 @@ const Navbar = () => {
 
     return (
         <Nav>
-            <Link to="/">
-                Mini <span>Blog</span>
+            <Link to="/" className="brand">
+                Mini<span>Blog</span>
             </Link>
             <ul >
                 <li>

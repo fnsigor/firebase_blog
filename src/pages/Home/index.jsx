@@ -13,12 +13,14 @@ const Content = styled.div`
     align-items: center;
     justify-content: center;
 
+ 
+
     .search-form{
         max-width: 100%;
         width: 60%;
         display: flex;
         justify-content:center;
-        margin-bottom: 2em;
+        margin-bottom: 6rem;
 
         input {
         margin-right: 10px;
@@ -63,7 +65,7 @@ function Home() {
     return (
         <Content>
             <h1>Veja os nossos posts mais recentes</h1>
-            <form onSubmit={handleSubmit} className='serach-form'>
+            <form onSubmit={handleSubmit} className='search-form'>
                 <input
                     type="text"
                     placeholder='Ou busque por tags'

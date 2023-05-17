@@ -61,7 +61,7 @@ function Login() {
         if (user) {
             navigate("/");
         }
-    }, [])
+    }, [user])
 
     return (
         <Content>

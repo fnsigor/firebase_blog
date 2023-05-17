@@ -2,8 +2,6 @@ import { Outlet } from "react-router-dom"
 import Navbar from "./components/Navbar"
 import Footer from "./components/Footer"
 import { AuthProvider } from "./context/AuthContext"
-
-
 import { onAuthStateChanged } from "firebase/auth"
 import { useEffect, useState } from "react"
 import { useAuthentication } from "./hooks/useAuthentication"
