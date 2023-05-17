@@ -28,7 +28,7 @@ h1{
 }
 
 .container {
-    min-height: 60vh;
+    min-height: 74vh;
     margin-bottom: 5rem;
 }
 
