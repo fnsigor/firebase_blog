@@ -7,7 +7,6 @@ import Tag from './Tag'
 
 const Content = styled.div`
     
-  position: relative;
   margin-bottom: 10rem;
 
   border-radius: 5px;
@@ -15,36 +14,7 @@ const Content = styled.div`
   width: 600px;
 
 
-  .userData-img{
-
-    position: absolute;
-    top: 3.2rem; 
-    left: 1rem;
-    z-index: 1;
-
-    *{
-      word-break: break-all;
-    }
-
-    .createdBy, .userId{
-    color: #fff;
-    font-weight: bold;
-    text-shadow:  0 0 3px #000;
-  }
-
-    .createdBy {
-      font-size: 1.4rem;
-      margin-bottom: 0.5rem;
-    }
-    
-    .userId{
-      font-style: italic;
-      font-size: 1.2rem;
-    }
-  }
-
-
-  .userData-noimg{
+  .userData{
 
     margin-bottom: 1rem;
 
@@ -65,7 +35,7 @@ const Content = styled.div`
       font-style: italic;
       font-size: 1.2rem;
     }
-} 
+  } 
 
 
   img {
@@ -92,6 +62,7 @@ const Content = styled.div`
 .verMais{
   color: #444;
   font-weight: bold;
+  font-size: 1.4rem;
 
   :hover{
     color: #888;
@@ -118,18 +89,6 @@ function PostDetails({ post }) {
 
   const [hasImage, setHasImage] = useState(true)
 
-  if (hasImage) {
-    return <ImagePost setHasImage={setHasImage} post={post} />
-  } else {
-    return <NoImagePost post={post} />
-  }
-
-}
-
-
-
-function ImagePost({ setHasImage, post }) {
-
   const words = post.body.split(' ')
 
   const bodyHasMoreThan200Words = words.length > 200
@@ -137,55 +96,23 @@ function ImagePost({ setHasImage, post }) {
   return (
     <Content>
 
-      <div className="userData-img">
-        <p className="createdBy">{post.createdBy}</p>
-        <p className="userId">
-          #{Array.from(post.uid).splice(20)}
-        </p>
-      </div>
 
       <h2>{post.title}</h2>
-      <Link to={`/posts/${post.id}`} className="img-link">
-        <img
-          onError={() => setHasImage(false)}
-          src={post.image} alt={post.title} />
-      </Link>
-      {bodyHasMoreThan200Words
-        ? (<p className='post-body'>
-          {words.splice(0, 100).join(' ')}...   <Link className='verMais' to={`/posts/${post.id}`} >Ver mais</Link>
-        </p>)
-        : (<p className='post-body'>{post.body}</p>)
-      }
-      <ul className="tags">
-        {post.tags.map((tag) => (
-          <Tag key={tag} tagName={tag} />
-        ))}
-      </ul>
-
-    </Content>
-  )
-}
-
-
-function NoImagePost({ post }) {
-
-  const words = post.body.split(' ')
-
-  const bodyHasMoreThan200Words = words.length > 200
-
-
-  return (
-    <Content>
-
-
-      <h2>{post.title}</h2>
-      <div className="userData-noimg">
+      <div className="userData">
         <p className="createdBy">{post.createdBy} - #{Array.from(post.uid).splice(20)}</p>
       </div>
 
+      {hasImage && (
+        <Link to={`/posts/${post.id}`} className="img-link">
+          <img
+            onError={() => setHasImage(false)}
+            src={post.image} alt={post.title} />
+        </Link>
+      )}
+
       {bodyHasMoreThan200Words
         ? (<p className='post-body'>
-          {words.splice(0, 100).join(' ')}...   <Link className='verMais' to={`/posts/${post.id}`} >Ver mais</Link>
+          {words.splice(0,30).join(' ')}...   <Link className='verMais' to={`/posts/${post.id}`} >Ver mais</Link>
         </p>)
         : (<p className='post-body'>{post.body}</p>)
       }
@@ -198,7 +125,6 @@ function NoImagePost({ post }) {
 
     </Content>
   )
-
 }
 
 export default PostDetails

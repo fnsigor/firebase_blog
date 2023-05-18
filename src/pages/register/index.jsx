@@ -59,12 +59,6 @@ const Register = () => {
     const { user } = useContext(AuthContext)
     const navigate = useNavigate();
 
-    useEffect(() => {
-        if (!user) {
-            navigate("/");
-        }
-    }, [])
-
     return (
         <Content>
             <div className="register">

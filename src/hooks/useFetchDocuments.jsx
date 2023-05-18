@@ -70,7 +70,5 @@ export const useFetchDocuments = (docCollection, search = null, uid = null) => {
         setCancelled(true);
     }, []);
 
-    console.log(documents)
-
     return { documents, loading, error };
 }

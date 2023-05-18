@@ -8,10 +8,12 @@ import {
 
 import { useState, useEffect } from "react";
 import { app } from "../firebase/config";
+import { useNavigate } from "react-router-dom";
 
 export const useAuthentication = () => {
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(null);
+    const navigate = useNavigate();
 
     // deal with memory leak
     const [cancelled, setCancelled] = useState(false);
@@ -65,6 +67,7 @@ export const useAuthentication = () => {
         console.log('saindo')
         checkIfIsCancelled();
         signOut(auth);
+        navigate('/')
     };
 
     const login = async (data) => {

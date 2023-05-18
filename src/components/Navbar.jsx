@@ -6,12 +6,12 @@ import { useAuthentication } from '../hooks/useAuthentication'
 
 
 const Nav = styled.nav`
-display: flex;
-box-shadow: rgba(0,0,0, .15) 0 -2px 10px 5px;
-justify-content: space-between;
-align-items: center;
-padding: 2rem 4rem;
-margin-bottom: 4rem;
+    display: flex;
+    box-shadow: rgba(0,0,0, .15) 0 -2px 10px 5px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 4rem;
+    margin-bottom: 4rem;
 
 .brand{
     font-size:2rem;
@@ -24,20 +24,26 @@ margin-bottom: 4rem;
 
 ul{
     display: flex;
+    align-items: center;
     list-style: none;
 
     li{
         margin-right: 1rem;
-
-        a{
-            padding:  .4rem .6rem;
-            font-size: 1.6rem;
-        }
     }
 
-
-    button{
+    a, button{
+        padding:  .8rem 1.4rem;
         font-size: 1.6rem;
+        transition: all.3s;
+        border-radius: 5px;
+        background-color: none;
+        background-color: #f6fcff;
+
+        :hover{
+            background-color: #000000;
+            color: #fff;
+            cursor: pointer;
+        }
     }
 }
 `

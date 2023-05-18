@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import { useInsertDocument } from "../../hooks/useInsertDocument";
 import { useNavigate } from "react-router-dom";
 import { useAuthValue } from "../../context/AuthContext";
-import styled from "styled-components";
 
 const CreatePost = () => {
     const [title, setTitle] = useState("");
@@ -38,10 +37,8 @@ const CreatePost = () => {
             }
         }
 
-        // create tags array
         const tagsArray = tags.split(",").map((tag) => tag.trim().toLowerCase());
 
-        // check values
         if (!title || !tags || !body) {
             setFormError("Por favor, preencha todos os campos!");
         }
@@ -68,21 +65,8 @@ const CreatePost = () => {
             createdBy: user.displayName,
         });
 
-        // redirect to home page
         navigate("/");
     };
-
-    const Content = styled.div`
-
-        label{
-            font-size: 1.8rem
-        }
-        
-        input{
-            font-size: 1.6rem
-
-        }
-    `
 
     return (
         <div>
@@ -131,7 +115,7 @@ const CreatePost = () => {
                         value={tags}
                     />
                 </label>
-                {!response.loading && <button className="btn">Criar post!</button>}
+                {!response.loading && <button className="btn" style={{marginInline: 'auto', display: 'block'}}>Criar post!</button>}
                 {response.loading && (
                     <button className="btn" disabled>
                         Aguarde.. .

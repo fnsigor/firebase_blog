@@ -28,6 +28,7 @@ const Content = styled.div`
   margin-bottom: 0.2em;
   color: #000;
   font-weight: bold;
+  font-size: 1.4rem
 }
 
 .image_preview {
@@ -68,7 +69,7 @@ const EditPost = () => {
         const tagsArray = tags.split(",").map((tag) => tag.trim().toLowerCase());
 
         // check values
-        if (!title || !image || !tags || !body) {
+        if (!title || !tags || !body) {
             setFormError("Por favor, preencha todos os campos!");
         }
 
@@ -118,7 +119,7 @@ const EditPost = () => {
         <div>
             {post ? (
                 <Content>
-                    <h2>Editar post</h2>
+                    <h1>Editar post</h1>
                     <p>Altere os dados do post "{post.title}"</p>
                     <form onSubmit={handleSubmit}>
                         <label>
@@ -137,7 +138,6 @@ const EditPost = () => {
                             <input
                                 type="text"
                                 name="image"
-                                required
                                 placeholder="Insira uma imagem que representa seu post"
                                 onChange={(e) => setImage(e.target.value)}
                                 value={image}

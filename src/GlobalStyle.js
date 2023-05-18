@@ -30,7 +30,7 @@ h1{
 
 h1 + p{
     font-size: 2rem;
-        margin-bottom: 2rem;
+        margin-bottom: 6rem;
         text-align: center;
 }
 
@@ -49,20 +49,17 @@ textarea:focus {
     outline: none;
 }
 
-a,
-nav button {
+a {
     text-decoration: none;
     background-color: transparent;
     border: none;
     color: #000;
-    transition: 0.4s;
-    font-size: 1em;
+    font-size: 1rem;
     cursor: pointer;
     font-family: "Montserrat", sans-seri;
 }
 
-a:hover,
-nav button:hover {
+a:hover {
     color: #bbb;
 }
 
@@ -75,12 +72,12 @@ form {
 label {
     display: flex;
     flex-direction: column;
-    margin-bottom: 1em;
+    margin-bottom: 1rem;
     font-size: 1.8rem;
 }
 
 label span {
-    margin-bottom: 0.3em;
+    margin-bottom: 0.3rem;
     font-weight: bold;
     text-align: left;
 }
@@ -90,15 +87,18 @@ textarea {
     box-sizing: border-box;
     border: none;
     border-bottom: 1px solid #ccc;
-    padding: 0.8em 0em;
+    padding: 0.8rem 0rem;
     background-color: transparent;
     font-size: 1.6rem;
+    margin-bottom: 2rem;
 }
 
 textarea{
     height: 200px;
     resize: none;
-    /* border: 1px solid #ccc; */
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    border-top: 1px solid #ccc;
 }
 
 input::placeholder,
@@ -112,13 +112,15 @@ textarea::placeholder {
     text-align: center;
     cursor: pointer;
     border-radius: 10px;
-    width: 120px;
+    width: 12rem;
     font-weight: bold;
     border: none;
-    padding: 10px 15px;
+    padding: 1rem 1.5rem;
     font-size: 1em;
     border-radius: 5px;
     font-size: 1.4rem;
+
+    transition: 0.2s;
 }
 
 .btn.btn-dark {
@@ -129,7 +131,7 @@ textarea::placeholder {
     background-color: transparent;
     color: #000;
     border: 1px solid #000;
-    padding: 7px 30px;
+    padding: .7rem 3rem;
 }
 
 .btn:hover {
@@ -153,15 +155,13 @@ button[disabled] {
     color: #721c24;
     background-color: #f8d7da;
     border: 1px solid #f5c6cb;
-    padding: 5px;
+    padding: .5rem;
     border-radius: 5px;
 }
 
 .active {
-    background-color: #000;
-    color: #fff;
-
-    border-radius: 5px;
+    background-color: #000 !important;
+    color: #fff !important;
 }
 `
 

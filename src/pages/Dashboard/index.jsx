@@ -30,13 +30,14 @@ const Content = styled.div`
   padding: 10px 25px;
 }
 
-.post_header {
+h4.post_header {
   display: flex;
   justify-content: space-between;
   font-weight: bold;
   border-bottom: 2px solid #ccc;
   width: 80%;
   padding: 10px;
+  font-size: 1.8rem;
 }
 
 .post_row {
@@ -46,17 +47,18 @@ const Content = styled.div`
   border-bottom: 1px solid #eee;
   width: 80%;
   padding: 10px;
+  
 }
 
 .post_row p {
   color: #000;
+  font-size: 1.6rem;
 }
 
-.post_row button,
-.post_row a {
-  margin: 0 5px;
-  height: 30px;
-  width: 100px;
+
+.buttons{
+  display: flex;
+  gap: 15px;
 }
 
 `
@@ -96,14 +98,11 @@ function Dashboard() {
           </div>)
         : (
           <>
-            <div className='post_header'>
-              <span>Título</span>
-              <span>Ações</span>
-            </div>
+            <h4 className='post_header'> Título </h4>
             {posts && posts.map(post => (
               <div key={post.id} className="post_row">
                 <p>{post.title}</p>
-                <div>
+                <div className="buttons">
                   <Link to={`/posts/${post.id}`} className="btn btn-outline">Ver</Link>
                   <Link to={`/posts/edit/${post.id}`} className="btn btn-outline">Editar</Link>
                   <button

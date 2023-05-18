@@ -15,16 +15,18 @@ const Content = styled.div`
 
  
 
-    .search-form{
+    .search-form{   
         max-width: 100%;
         width: 60%;
+        margin-bottom: 6rem;
+        gap: 4rem;
         display: flex;
         justify-content:center;
-        margin-bottom: 6rem;
+        align-items: center;
 
         input {
-        margin-right: 10px;
-        width: 50%;
+            width: 30%;
+            margin-bottom: 0;
         }
     }
 
