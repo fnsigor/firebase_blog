@@ -17,15 +17,6 @@ const Content = styled.div`
   align-items: center;
 
 
-h2 {
-  font-size: 2.2em;
-  margin-bottom: 0.5em;
-}
-
- p {
-  color: #aaa;
-  margin-bottom: 1em;
-}
 
 .noposts {
   text-align: center;
@@ -95,7 +86,7 @@ function Dashboard() {
 
   return (
     <Content>
-      <h2>Dashboard</h2>
+      <h1>Dashboard</h1>
       <p>Gerencie os seus posts</p>
       {(posts && posts.length === 0)
         ? (

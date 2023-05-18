@@ -60,7 +60,7 @@ const Register = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (user) {
+        if (!user) {
             navigate("/");
         }
     }, [])

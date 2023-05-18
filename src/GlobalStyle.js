@@ -24,7 +24,14 @@ body {
 
 h1{
         font-size: 2.6rem;
+        margin-bottom: 1.5rem;
+        text-align: center;
+}
+
+h1 + p{
+    font-size: 2rem;
         margin-bottom: 2rem;
+        text-align: center;
 }
 
 .container {
@@ -69,6 +76,7 @@ label {
     display: flex;
     flex-direction: column;
     margin-bottom: 1em;
+    font-size: 1.8rem;
 }
 
 label span {
@@ -84,6 +92,13 @@ textarea {
     border-bottom: 1px solid #ccc;
     padding: 0.8em 0em;
     background-color: transparent;
+    font-size: 1.6rem;
+}
+
+textarea{
+    height: 200px;
+    resize: none;
+    /* border: 1px solid #ccc; */
 }
 
 input::placeholder,
@@ -103,6 +118,7 @@ textarea::placeholder {
     padding: 10px 15px;
     font-size: 1em;
     border-radius: 5px;
+    font-size: 1.4rem;
 }
 
 .btn.btn-dark {

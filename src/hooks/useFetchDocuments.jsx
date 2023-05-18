@@ -13,58 +13,56 @@ export const useFetchDocuments = (docCollection, search = null, uid = null) => {
 
     const [cancelled, setCancelled] = useState(false);
 
-    useEffect(() => {
+    async function loadData() {
+        if (cancelled) return
 
-        async function loadData() {
-            if (cancelled) return
+        setLoading(true)
 
-            setLoading(true)
-
-            const collectionRef = await collection(db, docCollection)
+        const collectionRef = await collection(db, docCollection)
 
 
-            try {
+        try {
 
 
-                let q
+            let q
 
-                if (search) {
-                    q = await query(collectionRef,
-                        where('tags', 'array-contains', search),
-                        orderBy('createdAt', 'desc'))
+            if (search) {
+                q = await query(collectionRef,
+                    where('tags', 'array-contains', search),
+                    orderBy('createdAt', 'desc'))
 
-                } else if (uid) {
-                    q = await query(collectionRef,
-                        where('uid', '==', uid),
-                        orderBy('createdAt', 'desc'))
+            } else if (uid) {
+                q = await query(collectionRef,
+                    where('uid', '==', uid),
+                    orderBy('createdAt', 'desc'))
 
-                } else {
-                    q = await query(collectionRef, orderBy('createdAt', 'desc'))
+            } else {
+                q = await query(collectionRef, orderBy('createdAt', 'desc'))
 
-                }
-
-
-                await onSnapshot(q, (querySnapshot) => { //onSnapshot mapeia os dados do banco e quando eles são alterados, tras essa alteração
-                    setDocuments(
-                        querySnapshot.docs.map(doc => ({
-                            id: doc.id,
-                            ...doc.data()
-                        }))
-                    )
-                })
-
-                setLoading(false) //setLoading vai nos dois pq se cair no erro o codigo trava e não sai do try catch
-
-            } catch (error) {
-                console.log(error);
-                setError(error.message)
-
-                setLoading(false)
             }
+
+
+            await onSnapshot(q, (querySnapshot) => { //onSnapshot mapeia os dados do banco e quando eles são alterados, tras essa alteração
+                setDocuments(
+                    querySnapshot.docs.map(doc => ({
+                        id: doc.id,
+                        ...doc.data()
+                    }))
+                )
+            })
+
+            setLoading(false) //setLoading vai nos dois pq se cair no erro o codigo trava e não sai do try catch
+            
+        } catch (error) {
+            console.log(error);
+            setError(error.message)
+
+            setLoading(false)
         }
+    }
 
+    useEffect(() => {
         loadData()
-
     }, [docCollection, search, uid, cancelled]);
 
 
@@ -72,6 +70,7 @@ export const useFetchDocuments = (docCollection, search = null, uid = null) => {
         setCancelled(true);
     }, []);
 
+    console.log(documents)
 
     return { documents, loading, error };
 }

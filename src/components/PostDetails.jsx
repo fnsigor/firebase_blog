@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
+import Tag from './Tag'
 
 const Content = styled.div`
     
@@ -73,7 +74,7 @@ const Content = styled.div`
     width: 100%;
     object-fit: cover;
     
-    
+    max-height : 75rem;
     min-height: 25rem;
   }
 
@@ -128,6 +129,11 @@ function PostDetails({ post }) {
 
 
 function ImagePost({ setHasImage, post }) {
+
+  const words = post.body.split(' ')
+
+  const bodyHasMoreThan200Words = words.length > 200
+
   return (
     <Content>
 
@@ -144,12 +150,15 @@ function ImagePost({ setHasImage, post }) {
           onError={() => setHasImage(false)}
           src={post.image} alt={post.title} />
       </Link>
-      {post.body && <p className='post-body'>{post.body}</p>}
+      {bodyHasMoreThan200Words
+        ? (<p className='post-body'>
+          {words.splice(0, 100).join(' ')}...   <Link className='verMais' to={`/posts/${post.id}`} >Ver mais</Link>
+        </p>)
+        : (<p className='post-body'>{post.body}</p>)
+      }
       <ul className="tags">
         {post.tags.map((tag) => (
-          <li key={tag}>
-            <p><span>#</span>{tag}</p>
-          </li>
+          <Tag key={tag} tagName={tag} />
         ))}
       </ul>
 
@@ -163,12 +172,6 @@ function NoImagePost({ post }) {
   const words = post.body.split(' ')
 
   const bodyHasMoreThan200Words = words.length > 200
-
-
-  useEffect(() => {
-    console.log('o post ' + post.title + 'tem ' + words.length + 'palavras');
-    console.log(words);
-  }, [])
 
 
   return (
@@ -189,9 +192,7 @@ function NoImagePost({ post }) {
 
       <ul className="tags">
         {post.tags.map((tag) => (
-          <li key={tag}>
-            <p><span>#</span>{tag}</p>
-          </li>
+          <Tag key={tag} tagName={tag} />
         ))}
       </ul>
 

@@ -1,9 +1,10 @@
 
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useInsertDocument } from "../../hooks/useInsertDocument";
 import { useNavigate } from "react-router-dom";
 import { useAuthValue } from "../../context/AuthContext";
+import styled from "styled-components";
 
 const CreatePost = () => {
     const [title, setTitle] = useState("");
@@ -18,22 +19,30 @@ const CreatePost = () => {
 
     const { insertDocument, response } = useInsertDocument("posts");
 
+    useEffect(() => {
+        if (!user) {
+            navigate("/login");
+        }
+    }, [])
+
     const handleSubmit = (e) => {
         e.preventDefault();
         setFormError("");
 
         // validate image
-        try {
-            new URL(image);
-        } catch (error) {
-            setFormError("A imagem precisa ser uma URL.");
+        if (image) {
+            try {
+                new URL(image);
+            } catch (error) {
+                setFormError("A imagem precisa ser uma URL.");
+            }
         }
 
         // create tags array
         const tagsArray = tags.split(",").map((tag) => tag.trim().toLowerCase());
 
         // check values
-        if (!title || !image || !tags || !body) {
+        if (!title || !tags || !body) {
             setFormError("Por favor, preencha todos os campos!");
         }
 
@@ -63,9 +72,21 @@ const CreatePost = () => {
         navigate("/");
     };
 
+    const Content = styled.div`
+
+        label{
+            font-size: 1.8rem
+        }
+        
+        input{
+            font-size: 1.6rem
+
+        }
+    `
+
     return (
         <div>
-            <h2>Criar post</h2>
+            <h1>Criar post</h1>
             <p>Escreva sobre o que quiser e compartilhe o seu conhecimento!</p>
             <form onSubmit={handleSubmit}>
                 <label>
@@ -84,7 +105,6 @@ const CreatePost = () => {
                     <input
                         type="text"
                         name="image"
-                        required
                         placeholder="Insira uma imagem que representa seu post"
                         onChange={(e) => setImage(e.target.value)}
                         value={image}
