@@ -25,7 +25,7 @@ const Content = styled.div`
         align-items: center;
 
         input {
-            width: 30%;
+            width: 50%;
             margin-bottom: 0;
         }
     }
@@ -41,6 +41,26 @@ const Content = styled.div`
     .noposts a {
         padding: 10px 25px;
     }
+
+    @media (max-width: 700px) {
+
+        .search-form{   
+        max-width: 100%;
+        width: 60%;
+        margin-bottom: 6rem;
+        gap: 1.5rem;
+        flex-direction: column;
+        
+        
+            input {
+                width: 90%;
+                margin-bottom: 0;
+            }
+        }
+
+    }
+
+    
 
 
 `

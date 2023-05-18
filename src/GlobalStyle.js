@@ -116,10 +116,8 @@ textarea::placeholder {
     font-weight: bold;
     border: none;
     padding: 1rem 1.5rem;
-    font-size: 1em;
     border-radius: 5px;
     font-size: 1.4rem;
-
     transition: 0.2s;
 }
 
@@ -163,6 +161,47 @@ button[disabled] {
     background-color: #000 !important;
     color: #fff !important;
 }
+
+.tagList {
+  margin-bottom: 1.2rem;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.tags p {
+  margin-right: 0.5rem;
+  font-size: 1.4rem;
+}
+
+.tags span {
+  font-weight: bold;
+}
+
+@media (max-width: 700px) {
+    .container {
+        padding-inline: 2rem;
+    }
+
+    h1{
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+        text-align: center;
+    }
+
+    h1 + p{
+        font-size: 1.8rem;
+        margin-bottom: 6rem;
+        text-align: center;
+    }
+
+    .btn {
+       
+        width: 10rem;
+        padding: 1rem 1.5rem;
+        font-size: 1.4rem;
+    }
+}
+
 `
 
 export default GlobalStyle;

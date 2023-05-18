@@ -59,13 +59,6 @@ const Content = styled.div`
     margin-right: 1rem;
     font-size: 1.6rem;
   }
-
- .tags {
-  display: flex;
-  a{
-    font-size: 1.6rem;
-  }
-}
 `
 
 function Post() {
@@ -104,7 +97,7 @@ function Post() {
 
                     <p className='body'>{post.body}</p>
                     <h3>Tags:</h3>
-                    <ul className="tags">
+                    <ul className="tagList">
                         {post.tags.map((tag) => (
                             <Tag key={tag} tagName={tag} />
                         ))}

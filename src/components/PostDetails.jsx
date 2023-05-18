@@ -11,7 +11,7 @@ const Content = styled.div`
 
   border-radius: 5px;
 
-  width: 600px;
+  max-width: 600px;
 
 
   .userData{
@@ -48,15 +48,15 @@ const Content = styled.div`
     min-height: 25rem;
   }
 
-  h2 {
+  .postTitle {
     margin-bottom: 0.8rem;
     font-size: 2.4rem;
     line-height: 2.2rem;
   }
   
 .post-body{
-  font-size: 1.6rem;
-  margin-bottom:.5rem;
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
 }
 
 .verMais{
@@ -69,19 +69,39 @@ const Content = styled.div`
   }
 }
 
-.tags {
-  margin-bottom: 1.2rem;
-  display: flex;
+
+@media (max-width: 700px) {
+  max-width: 300px;
+
+
+  img {
+    border-radius: 5px;
+    margin-bottom: .5rem;
+    width: 100%;
+    object-fit: cover;
+    
+    max-height : 20rem;
+    min-height: 10rem;
+  }
+
+  .postTitle {
+    margin-bottom: 0.4rem;
+    font-size: 1.8rem;
+    line-height: 2rem;
+  }
+
+  .userData{
+    margin-bottom: .4rem;
+  }
+  
+  
+  .post-body{
+    font-size: 1.6rem;
+
+  }
 }
 
-.tags p {
-  margin-right: 0.5rem;
-  font-size: 1.4rem;
-}
 
-.tags span {
-  font-weight: bold;
-}
 
 `
 
@@ -97,9 +117,9 @@ function PostDetails({ post }) {
     <Content>
 
 
-      <h2>{post.title}</h2>
+      <h2 className="postTitle">{post.title}</h2>
       <div className="userData">
-        <p className="createdBy">{post.createdBy} - #{Array.from(post.uid).splice(20)}</p>
+        <p className="createdBy">{post.createdBy} - <span className="userId">#{Array.from(post.uid).splice(20)}</span></p>
       </div>
 
       {hasImage && (
@@ -117,7 +137,7 @@ function PostDetails({ post }) {
         : (<p className='post-body'>{post.body}</p>)
       }
 
-      <ul className="tags">
+      <ul className="tagList">
         {post.tags.map((tag) => (
           <Tag key={tag} tagName={tag} />
         ))}

@@ -53,6 +53,7 @@ h4.post_header {
 .post_row p {
   color: #000;
   font-size: 1.6rem;
+  text-align: start;
 }
 
 

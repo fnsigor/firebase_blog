@@ -46,6 +46,21 @@ ul{
         }
     }
 }
+
+    .mobileMenu{
+        display: none;
+    }
+
+@media (max-width: 700px) {
+    .mobileMenu{
+    display: initial;
+    }
+
+    ul{
+        display: none;
+    }
+}
+
 `
 
 const Navbar = () => {
@@ -57,6 +72,9 @@ const Navbar = () => {
             <Link to="/" className="brand">
                 Mini<span>Blog</span>
             </Link>
+            <div className="mobileMenu">
+                menu
+            </div>
             <ul >
                 <li>
                     <NavLink
