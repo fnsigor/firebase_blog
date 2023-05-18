@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import styled from 'styled-components'
 import { useAuthValue } from '../context/AuthContext'
@@ -59,6 +59,11 @@ ul{
     ul{
         display: none;
     }
+
+    .mobileMenuButton{
+        background: none;
+        font-size: 1.4rem;
+    }
 }
 
 `
@@ -67,70 +72,81 @@ const Navbar = () => {
     const { logout } = useAuthentication();
     const { user } = useAuthValue();
 
+    const [menuText, setMenuText] = useState('Home')
+
     return (
         <Nav>
             <Link to="/" className="brand">
                 Mini<span>Blog</span>
             </Link>
             <div className="mobileMenu">
-                menu
+                <div className="dropdown">
+                    <button className="mobileMenuButton btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        {menuText}
+                    </button>
+                    <ul className="dropdown-menu">
+                        <li>
+                            <NavLink to="/" className="dropdown-item"
+                            onClick={(e) => setMenuText(e.target.textContent)}
+                            >Home</NavLink>
+                        </li>
+                        {!user && (
+                            <>
+                                <li>
+                                    <NavLink to="/login" className="dropdown-item" onClick={(e) => setMenuText(e.target.textContent)}> Entrar </NavLink>
+                                </li>
+                                <li>
+                                    <NavLink to="/register" className="dropdown-item" onClick={(e) => setMenuText(e.target.textContent)}> Cadastrar </NavLink>
+                                </li>
+                            </>
+                        )}
+                        {user && (
+                            <>
+                                <li>
+                                    <NavLink to="/posts/create"className="dropdown-item" onClick={(e) => setMenuText(e.target.textContent)} >Novo post </NavLink>
+                                </li>
+                                <li>
+                                    <NavLink to="/dashboard" className="dropdown-item" onClick={(e) => setMenuText(e.target.textContent)}> Dashboard </NavLink>
+                                </li>
+                            </>
+                        )}
+                        <li>
+                            <NavLink to="/about" className="dropdown-item" onClick={(e) => setMenuText(e.target.textContent)}>Sobre </NavLink>
+                        </li>
+                        {user && (
+                            <li>
+                                <button className="dropdown-item" onClick={logout}>Sair</button>
+                            </li>
+                        )}
+                    </ul>
+                </div>
             </div>
             <ul >
                 <li>
-                    <NavLink
-                        to="/"
-
-                    >
-                        Home
-                    </NavLink>
+                    <NavLink to="/" >Home</NavLink>
                 </li>
                 {!user && (
                     <>
                         <li>
-                            <NavLink
-                                to="/login"
-
-                            >
-                                Entrar
-                            </NavLink>
+                            <NavLink to="/login" > Entrar </NavLink>
                         </li>
                         <li>
-                            <NavLink
-                                to="/register"
-
-                            >
-                                Cadastrar
-                            </NavLink>
+                            <NavLink to="/register" > Cadastrar </NavLink>
                         </li>
                     </>
                 )}
                 {user && (
                     <>
                         <li>
-                            <NavLink
-                                to="/posts/create"
-
-                            >
-                                Novo post
-                            </NavLink>
+                            <NavLink to="/posts/create" >Novo post </NavLink>
                         </li>
                         <li>
-                            <NavLink
-                                to="/dashboard"
-
-                            >
-                                Dashboard
-                            </NavLink>
+                            <NavLink to="/dashboard" > Dashboard </NavLink>
                         </li>
                     </>
                 )}
                 <li>
-                    <NavLink
-                        to="/about"
-
-                    >
-                        Sobre
-                    </NavLink>
+                    <NavLink to="/about" >Sobre </NavLink>
                 </li>
                 {user && (
                     <li>
