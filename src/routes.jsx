@@ -106,6 +106,44 @@ export const router = createBrowserRouter([
                     },
                 ]
             },
+            {
+                errorElement: <ErrorPage />,
+                children: [
+                    { index: true, element: <Home /> },
+                    {
+                        path: "firebase-blog-lake.vercel.app/about",
+                        element: <About />,
+                    },
+                    {
+                        path: "firebase-blog-lake.vercel.app/login",
+                        element: <Login />,
+                    },
+                    {
+                        path: "firebase-blog-lake.vercel.app/register",
+                        element: <Register />,
+                    },
+                    {
+                        path: "firebase-blog-lake.vercel.app/posts/create",
+                        element: <CreatePost />,
+                    },
+                    {
+                        path: "firebase-blog-lake.vercel.app/posts/:id",
+                        element: <Post />,
+                    },
+                    {
+                        path: "firebase-blog-lake.vercel.app/posts/edit/:id",
+                        element: <EditPost />,
+                    },
+                    {
+                        path: "firebase-blog-lake.vercel.app/dashboard",
+                        element: <Dashboard />,
+                    },
+                    {
+                        path: "firebase-blog-lake.vercel.app/search",
+                        element: <Search />,
+                    },
+                ]
+            },
             
         ]
     },
