@@ -50,14 +50,21 @@ const Register = () => {
 
     }
 
+    const { user } = useContext(AuthContext)
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (user) {
+            navigate("/");
+        }
+    }, [user])
+
     useEffect(() => {
         if (authError) {
             setError(authError)
         }
     }, [authError])
 
-    const { user } = useContext(AuthContext)
-    const navigate = useNavigate();
 
     return (
         <Content>

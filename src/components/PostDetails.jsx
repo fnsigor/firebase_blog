@@ -111,7 +111,9 @@ function PostDetails({ post }) {
 
   const words = post.body.split(' ')
 
-  const bodyHasMoreThan200Words = words.length > 200
+  console.log(words)
+
+  const bodyHasMoreThan30Words = words.length > 30
 
   return (
     <Content>
@@ -130,7 +132,7 @@ function PostDetails({ post }) {
         </Link>
       )}
 
-      {bodyHasMoreThan200Words
+      {bodyHasMoreThan30Words
         ? (<p className='post-body'>
           {words.splice(0,30).join(' ')}...   <Link className='verMais' to={`/posts/${post.id}`} >Ver mais</Link>
         </p>)
