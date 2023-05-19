@@ -18,6 +18,7 @@ import Dashboard from "./pages/Dashboard";
 import Search from "./pages/Search";
 import Post from "./pages/Post";
 import EditPost from "./pages/EditPost";
+import GlobalErrorPage from "./GlobalErrorPage";
 
 
 
@@ -27,6 +28,7 @@ export const router = createBrowserRouter([
     {
         path: "/",
         element: <App />,
+        errorElement: <GlobalErrorPage />,
         children: [
             {
                 errorElement: <ErrorPage />,

@@ -37,6 +37,7 @@ h1 + p{
 .container {
     min-height: 74vh;
     margin-bottom: 5rem;
+    position: relative;
 }
 
 input::placeholder,
@@ -65,7 +66,7 @@ a:hover {
 
 /* form styles */
 form {
-    max-width: 40%;
+    max-width: 50%;
     margin: 0 auto;
 }
 
@@ -99,6 +100,7 @@ textarea{
     border-left: 1px solid #ccc;
     border-right: 1px solid #ccc;
     border-top: 1px solid #ccc;
+    padding-left: .3rem;
 }
 
 input::placeholder,
@@ -129,7 +131,6 @@ textarea::placeholder {
     background-color: transparent;
     color: #000;
     border: 1px solid #000;
-    padding: .7rem 3rem;
 }
 
 .btn:hover {
@@ -166,6 +167,7 @@ button[disabled] {
   margin-bottom: 1.2rem;
   display: flex;
   flex-wrap: wrap;
+  padding: 0;
 }
 
 .tags p {
@@ -177,9 +179,15 @@ button[disabled] {
   font-weight: bold;
 }
 
-@media (max-width: 700px) {
+.mobileMenuButton{
+    display: none;
+}
+
+@media (max-width: 706px) {
+
     .container {
         padding-inline: 2rem;
+        min-height: 56vh;
     }
 
     h1{
@@ -195,11 +203,45 @@ button[disabled] {
     }
 
     .btn {
-       
         width: 10rem;
-        padding: 1rem 1.5rem;
+        min-width: fit-content;
+        padding: .5rem 1rem;
         font-size: 1.4rem;
     }
+
+    form {
+        max-width: 360px;
+        margin: 0 auto;
+    }
+
+    input,
+    textarea {
+        font-size: 1.4rem;
+        margin-bottom: 1rem;
+    }
+
+    label {
+        margin-bottom: 1rem;
+        font-size: 1.6rem;
+    }
+
+
+    textarea{
+        height: 150px;
+    }
+
+
+    .mobileMenuButton{
+        display: block;
+        background: none;
+        font-size: 1.6rem;
+    }
+
+    .mobileMenu a, .mobileMenu ul button {
+        font-size: 1.4rem;
+    }
+
+
 }
 
 `

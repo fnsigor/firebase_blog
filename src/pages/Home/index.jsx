@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
 import { useFetchDocuments } from '../../hooks/useFetchDocuments'
 import PostDetails from '../../components/PostDetails'
+import LoadingSpin from '../../components/LoadingSpin'
 
 
 
@@ -96,7 +97,7 @@ function Home() {
             </form>
 
             <div>
-                {loading && <p>Carregando...</p>}
+                {loading && <LoadingSpin/>}
                 {posts && posts.map(post => <PostDetails key={post.id} post={post} />)}
                 {(posts && posts.length === 0) && (
                     <div className="noposts">

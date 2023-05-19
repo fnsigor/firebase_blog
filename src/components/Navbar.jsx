@@ -3,6 +3,7 @@ import { Link, NavLink } from 'react-router-dom'
 import styled from 'styled-components'
 import { useAuthValue } from '../context/AuthContext'
 import { useAuthentication } from '../hooks/useAuthentication'
+import MobileMenu from './MobileMenu'
 
 
 const Nav = styled.nav`
@@ -22,7 +23,7 @@ const Nav = styled.nav`
     }
 }
 
-ul{
+.desktopMenu{
     display: flex;
     align-items: center;
     list-style: none;
@@ -47,23 +48,14 @@ ul{
     }
 }
 
-    .mobileMenu{
+@media (max-width: 706px) {
+
+    padding: 1.5rem  2rem;
+
+    .desktopMenu{
         display: none;
     }
 
-@media (max-width: 700px) {
-    .mobileMenu{
-    display: initial;
-    }
-
-    ul{
-        display: none;
-    }
-
-    .mobileMenuButton{
-        background: none;
-        font-size: 1.4rem;
-    }
 }
 
 `
@@ -72,56 +64,14 @@ const Navbar = () => {
     const { logout } = useAuthentication();
     const { user } = useAuthValue();
 
-    const [menuText, setMenuText] = useState('Home')
-
+    
     return (
         <Nav>
             <Link to="/" className="brand">
                 Mini<span>Blog</span>
             </Link>
-            <div className="mobileMenu">
-                <div className="dropdown">
-                    <button className="mobileMenuButton btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        {menuText}
-                    </button>
-                    <ul className="dropdown-menu">
-                        <li>
-                            <NavLink to="/" className="dropdown-item"
-                            onClick={(e) => setMenuText(e.target.textContent)}
-                            >Home</NavLink>
-                        </li>
-                        {!user && (
-                            <>
-                                <li>
-                                    <NavLink to="/login" className="dropdown-item" onClick={(e) => setMenuText(e.target.textContent)}> Entrar </NavLink>
-                                </li>
-                                <li>
-                                    <NavLink to="/register" className="dropdown-item" onClick={(e) => setMenuText(e.target.textContent)}> Cadastrar </NavLink>
-                                </li>
-                            </>
-                        )}
-                        {user && (
-                            <>
-                                <li>
-                                    <NavLink to="/posts/create"className="dropdown-item" onClick={(e) => setMenuText(e.target.textContent)} >Novo post </NavLink>
-                                </li>
-                                <li>
-                                    <NavLink to="/dashboard" className="dropdown-item" onClick={(e) => setMenuText(e.target.textContent)}> Dashboard </NavLink>
-                                </li>
-                            </>
-                        )}
-                        <li>
-                            <NavLink to="/about" className="dropdown-item" onClick={(e) => setMenuText(e.target.textContent)}>Sobre </NavLink>
-                        </li>
-                        {user && (
-                            <li>
-                                <button className="dropdown-item" onClick={logout}>Sair</button>
-                            </li>
-                        )}
-                    </ul>
-                </div>
-            </div>
-            <ul >
+            <MobileMenu/>
+            <ul className="desktopMenu" >
                 <li>
                     <NavLink to="/" >Home</NavLink>
                 </li>

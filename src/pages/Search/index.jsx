@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import { useQuery } from '../../hooks/useQuery'
-import { useFetchDocuments } from '../../hooks/useFetchDocuments'
 import PostDetails from '../../components/PostDetails'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import styled from 'styled-components';
 
 import { collection, query, orderBy, onSnapshot, where } from 'firebase/firestore'
 
 import { db } from "../../firebase/config";
+import { useAuthValue } from '../../context/AuthContext'
+import MobileMenu from '../../components/MobileMenu'
 
 const Content = styled.div`
 
@@ -16,13 +17,22 @@ display: flex;
   align-items: center;
   justify-content: center;
 
-
-  h1 {
-  margin-bottom: 1em;
+.noposts p {
+    margin-bottom: 30px;
+    font-size: 1.6rem;
 }
 
- p {
-  margin-bottom: 30px;
+.noposts{
+    display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media (max-width: 706px) {
+    .noposts a {
+        display: none;
+    }
+
 }
 
 `
@@ -38,8 +48,16 @@ function Search() {
     const search = urlParamas.get('q')
     const [posts, setPosts] = useState([])
 
+    const { user } = useAuthValue()
+    const navigate = useNavigate();
+
+
     
     useEffect(() => {
+
+        if (!user) {
+            navigate("/login");
+        }
 
         async function loadData() {
     
@@ -88,13 +106,9 @@ function Search() {
     
     }, [search, query]);
 
-    
-    // const { documents: posts } = useFetchDocuments('posts', x);
-
-
     return (
         <Content>
-            <h1>Search</h1>
+            <h1>#{search}</h1>
             <div>
                 {(posts && posts.length === 0) && (
                     <div className="noposts">
@@ -104,6 +118,7 @@ function Search() {
                 )}
                 {posts && posts.map(post => <PostDetails key={post.id} post={post} />)}
             </div>
+            <MobileMenu/>
         </Content>
     )
 }

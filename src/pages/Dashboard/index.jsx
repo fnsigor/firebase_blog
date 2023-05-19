@@ -4,6 +4,7 @@ import { useAuthValue } from '../../context/AuthContext';
 import { useFetchDocuments } from '../../hooks/useFetchDocuments';
 import styled from 'styled-components';
 import { useDeleteDocument } from '../../hooks/useDeleteDocument';
+import MobileMenu from '../../components/MobileMenu';
 
 
 
@@ -23,34 +24,36 @@ const Content = styled.div`
 }
 
 .noposts p {
-  margin-bottom: 1.5em;
+  font-size: 1.6rem;
+  margin-bottom: 1.5rem;
 }
 
 .noposts a {
-  padding: 10px 25px;
+  padding: 1rem 2.5rem;
+  width: fit-content;
 }
 
-h4.post_header {
+.postHeader {
   display: flex;
   justify-content: space-between;
   font-weight: bold;
   border-bottom: 2px solid #ccc;
-  width: 80%;
-  padding: 10px;
+  width: 100%;
+  padding: 1rem;
   font-size: 1.8rem;
 }
 
-.post_row {
+.postRow {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid #eee;
-  width: 80%;
-  padding: 10px;
-  
+  border-bottom: 1px solid #ccc;
+  width: 100%;
+  padding: 1rem;
+  gap: 5rem;  
 }
 
-.post_row p {
+.postRow p {
   color: #000;
   font-size: 1.6rem;
   text-align: start;
@@ -60,6 +63,34 @@ h4.post_header {
 .buttons{
   display: flex;
   gap: 15px;
+}
+
+@media (max-width: 768px) {
+  .postRow{
+    flex-direction: column;
+    align-items: start;
+    gap: 0;
+    margin-bottom: 1rem;
+  }
+}
+
+@media (max-width: 700px) {
+
+  h4.postHeader {
+  width: 100%;
+  padding: 10px;
+  font-size: 1.8rem;
+}
+
+  .buttons{
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+
+  .dropdown{
+    margin-top: 3rem;
+  }
 }
 
 `
@@ -99,9 +130,9 @@ function Dashboard() {
           </div>)
         : (
           <>
-            <h4 className='post_header'> Título </h4>
+            <h4 className='postHeader'> Seus posts </h4>
             {posts && posts.map(post => (
-              <div key={post.id} className="post_row">
+              <div key={post.id} className="postRow">
                 <p>{post.title}</p>
                 <div className="buttons">
                   <Link to={`/posts/${post.id}`} className="btn btn-outline">Ver</Link>
@@ -116,8 +147,7 @@ function Dashboard() {
           </>
         )}
 
-      <div>
-      </div>
+      <MobileMenu />
     </Content>
   )
 }

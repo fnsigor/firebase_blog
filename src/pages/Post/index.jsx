@@ -5,6 +5,8 @@ import { useFetchDocument } from '../../hooks/useFetchDocument'
 import styled from 'styled-components'
 import { useAuthValue } from '../../context/AuthContext'
 import Tag from '../../components/Tag'
+import MobileMenu from '../../components/MobileMenu'
+import LoadingSpin from '../../components/LoadingSpin'
 
 
 const Content = styled.div`
@@ -59,6 +61,11 @@ const Content = styled.div`
     margin-right: 1rem;
     font-size: 1.6rem;
   }
+
+  .dropdown{
+    display: flex;
+    justify-content: center;
+  }
 `
 
 function Post() {
@@ -82,7 +89,7 @@ function Post() {
 
     return (
         <>
-            {loading && <p>Carregando post...</p>}
+            {loading && <LoadingSpin/>}
             {post && (
                 <Content >
                     <h1>{post.title}</h1>
@@ -102,7 +109,7 @@ function Post() {
                             <Tag key={tag} tagName={tag} />
                         ))}
                     </ul>
-
+                    <MobileMenu />
                 </Content>
 
             )}

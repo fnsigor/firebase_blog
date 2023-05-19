@@ -7,6 +7,7 @@ import { useAuthValue } from "../../context/AuthContext";
 import { useFetchDocument } from "../../hooks/useFetchDocument";
 import { useUpdateDocument } from "../../hooks/useUpdateDocument";
 import styled from "styled-components";
+import LoadingSpin from "../../components/LoadingSpin";
 
 
 const Content = styled.div`
@@ -182,7 +183,7 @@ const EditPost = () => {
                     </form>
                 </Content>
             )
-                : (<p>Carregando...</p>)
+                : (<LoadingSpin/>)
             }
 
         </div>
