@@ -1,6 +1,6 @@
 //router
 import {
-    createBrowserRouter
+    createBrowserRouter, createHashRouter
 } from "react-router-dom";
 
 
@@ -24,7 +24,7 @@ import GlobalErrorPage from "./GlobalErrorPage";
 
 //============================================= ROUTER CONFIG ======================
 
-export const router = createBrowserRouter([
+export const router = createHashRouter([
     {
         path: "/",
         element: <App />,
