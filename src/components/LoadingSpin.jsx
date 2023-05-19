@@ -19,7 +19,7 @@ width: 100%;
 function LoadingSpin() {
   return (
     <Content>
-        <div className="spinner">aa</div>
+        <div className="spinner">Carregando</div>
     </Content>
   )
 }

@@ -37,11 +37,10 @@ const Content = styled.div`
 
     .noposts p {
         margin-bottom: 1.5em;
+        font-size: 1.6rem;
     }
 
-    .noposts a {
-        padding: 10px 25px;
-    }
+   
 
     @media (max-width: 700px) {
 
