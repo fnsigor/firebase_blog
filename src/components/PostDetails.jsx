@@ -111,8 +111,6 @@ function PostDetails({ post }) {
 
   const words = post.body.split(' ')
 
-  console.log(words)
-
   const bodyHasMoreThan30Words = words.length > 30
 
   return (
