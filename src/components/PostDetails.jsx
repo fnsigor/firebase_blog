@@ -44,7 +44,7 @@ const Content = styled.div`
     width: 100%;
     object-fit: cover;
     
-    max-height : 75rem;
+    max-height : 65rem;
     min-height: 25rem;
   }
 
