@@ -1,13 +1,9 @@
 <!-- PROJECT NAME -->
 <h1 align="center">Firebase Blog</h1>
 <h4 align="center">Project made during the <a href="https://www.udemy.com/course/react-do-zero-a-maestria-c-hooks-router-api-projetos/">Hora de Codar</a> course</h4>
-<p align="center">:construction: work in progress...</p>
-
-<!-- PROJECT MAIN IMAGE
 <div align="center">
-<img src="https://user-images.githubusercontent.com/86209425/211900340-e49e65f4-601f-4e5e-bf2d-a27bc4dbd2f9.png" width="80%" >
+<img src="https://github.com/fnsigor/firebase_blog/assets/86209425/f7b67861-0836-479e-8beb-d645215f657b" width="80%" >
 </div>
- -->
 
 <br><br>
   
@@ -28,6 +24,7 @@
 <img src="https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E"/>
 <img src=https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB/>
 <img src=https://img.shields.io/badge/Firebase-FF3030?style=for-the-badge&logo=Firebase&logoColor=F2C026/>
+<img src="https://img.shields.io/badge/bootstrap-%23563D7C.svg?style=for-the-badge&logo=bootstrap&logoColor=white"/>
 
 
 <br><br>
@@ -35,18 +32,18 @@
 ## Features
 The main features of the application are:
 * C.R.U.D. methods with the posts
-* Authentication and password recovery
+* Authentication
 
 <br>
 
 ## Getting started
 
-* :construction: work in progress...
+* <a href="https://firebase-blog-lake.vercel.app/">project deploy</a>
 
 <br>
 
 ## Links
-  - Deploy on Vercel: :construction: work in progress...
+  - Deploy on Vercel: https://firebase-blog-lake.vercel.app
   - Repository: https://github.com/fnsigor/firebase_blog
   
 <br>
